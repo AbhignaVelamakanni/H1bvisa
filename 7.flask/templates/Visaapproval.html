@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-1B Visa Predictor</title>
+    <style>
+        body {
+            background-image: url('/static/images/plane.jpg'); /* Background Image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input, select {
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>H-1B Visa Predictor</h1>
+        <form action="/predict" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" name="name" required><br>
+
+            <label for="age">Age:</label><br>
+            <input type="number" name="age" min="18" max="50" required><br>
+
+            <label for="gender">Gender:</label><br>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Prefer Not to Say">Prefer Not to Say</option>
+            </select><br>
+
+            <label for="prev_visa_status">Previous Visa Status:</label><br>
+            <select name="prev_visa_status">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+
+            <label for="education">Education Qualification:</label><br>
+            <select name="education">
+                <option value="Bachelors">Bachelors</option>
+                <option value="Masters">Masters</option>
+                <option value="PhD">PhD</option>
+                <option value="none">None</option>
+            </select><br>
+
+            <label for="full_time_position">Full Time Position (Y/N):</label><br>
+            <select name="full_time_position">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select><br>
+
+            <label for="prevailing_wage">Prevailing Wage (in INR):</label><br>
+            <input type="number" name="prevailing_wage" min="30000" max="3000000" required><br>
+
+            <label for="year">Year of Application:</label><br>
+            <input type="number" name="year" required><br>
+
+            <label for="soc_name">SOC Name:</label><br>
+            <select name="soc_name" required>
+                <option value="1">1 - Software Developers</option>
+                <option value="2">2 - IT Project Managers</option>
+                <option value="3">3 - Managers</option>
+                <option value="none">None</option>
+            </select><br>
+            <small>1: Software Developers, 2: IT Project Managers, 3: Managers</small><br>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
